@@ -1,0 +1,22 @@
+
+CREATE TABLE [dbo].[MovieBase](
+	[Id] [int] NOT NULL IDENTITY(1,1),
+	[MovieName] [nvarchar](255) NULL,
+	[GenreId] [int] NULL,
+	[LanguageId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[MovieBase]  WITH CHECK ADD FOREIGN KEY([GenreId])
+REFERENCES [dbo].[GenreBase] ([Id])
+GO
+
+ALTER TABLE [dbo].[MovieBase]  WITH CHECK ADD FOREIGN KEY([LanguageId])
+REFERENCES [dbo].[LanguageBase] ([Id])
+GO
+
+
